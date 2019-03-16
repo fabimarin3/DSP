@@ -42,6 +42,7 @@ y2=x1+x2+x3;
 y3=x1+x2-x3+(2*x4);
 
 figure(2)%Para poner la segunda figura en el script
+clf;
 subplot(3,1,1); %Para hacer un subplot de 4 funciones, esta es la primera
 stem(y1,'g'); %Gráfica x1
 xlabel('Muestras');

@@ -4,7 +4,7 @@
 
 
 n = linspace(-10,10);
-f = @(n) 3*n-n.^2-5*n.^3;
+f = @(n) 10*cos(2*pi*n);
 xp = (f(n)+f(-n))/2;
 xi = (f(n)-f(-n))/2;
 xt = xp +xi;
@@ -19,38 +19,31 @@ axis([-10 10 -10 10])
 legend('función normal');
 
 
-figure(2) 
-stem(n,xp);
-axis([-10 10 -10 10])
-legend('función par')
- 
+figure(2)
 
-figure(3)
+subplot(3,1,1);
+stem(n,xp);
+axis([-10 10 -10 10])%
+xlabel('Muestras');
+ylabel('xp(n)');
+title('Componente par de x(n)');
+ 
+subplot(3,1,2);
 stem(n,xi);
 axis([-10 10 -10 10])
-legend('función impar')
+xlabel('Muestras');
+ylabel('x(n)');
+title('Componente impar de x(n)');
 
-figure (4)
+subplot(3,1,3);
 stem(n,xt);
 axis([-10 10 -10 10])
-legend('función sima de par impar')
+xlabel('Muestras');
+ylabel('xp(n)');
+title('Suma de las componentes par e impar de x(n)');
 
 
 
 
 
-
-
-
-
-
-% t = linspace(0,2*pi) ;
-% f = @(t) sin(t) ;
-% figure(1)
-% hold on
-% % f(t)
-% y1 = plot(t,f(t),'r') ;
-% %f(-t) 
-% y2 = plot(t,f(-t),'b') ;
-% legend('f(t)','f(-t)')
 

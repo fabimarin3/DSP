@@ -10,7 +10,15 @@ values=0:1/fs:duration; %Valores para los cuales deseo hacer el muestreo
 a=Am*sin(2*pi* freq*values); %Función que quiero hacer sonar
 sound(a); %Comando para hacer sonar a 'a'
 figure(1)
+stem(a);%Grafica de 'a' en función de los valores de muestreo
+axis([0 25 0 10]) %Acomodo de los ejes
+xlabel('Frecuencia (Hz)')
+ylabel('Función a(n)')
+title('Ejercicio 06')
+
+figure(2)
 plot(a);%Grafica de 'a' en función de los valores de muestreo
 axis([0 25 0 10]) %Acomodo de los ejes
 xlabel('Frecuencia (Hz)')
-ylabel('Función')
+ylabel('Función a(f)')
+title('Ejercicio 06')
