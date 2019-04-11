@@ -30,19 +30,19 @@ Convolucion = Y
 
 % %Correlacion
 
-n_h = flip (h);
-N_H = [n_h,zeros(1,m)];
+% n_h = flip (h);
+% N_H = [n_h,zeros(1,m)];
 
-for i=1:n+m-1 %Para i que va de 1 a n+m-1, el largo de y(n)
-R(i)=0; %y(n) inicia en cero
-for j=1:m %Para j que va de 1 a la cantidad de muestras de x(n)
-if(i-j+1>0) %Si i - j +1 es mayor que cero
-R(i)=R(i)+X(j)*N_H(i-j+1); %A y(n) sumele la matriz x(n) llena con los ceros multiplicada por la matriz h(n) 
-else
-end
-end
-end
-Correlacion = R
+% for i=1:n+m-1 %Para i que va de 1 a n+m-1, el largo de y(n)
+% R(i)=0; %y(n) inicia en cero
+% for j=1:m %Para j que va de 1 a la cantidad de muestras de x(n)
+% if(i-j+1>0) %Si i - j +1 es mayor que cero
+% R(i)=R(i)+X(j)*N_H(i-j+1); %A y(n) sumele la matriz x(n) llena con los ceros multiplicada por la matriz h(n) 
+% else
+% end
+% end
+% end
+% Correlacion = R
 
 
 
