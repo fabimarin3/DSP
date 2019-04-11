@@ -21,7 +21,6 @@ l_f = n_h(l_h);
 
 N_max = k_f+l_f;
 N_min = k_i+l_i;
-
-Y = [N_min:N_max]
+Muestras = [N_min:N_max]
 
             

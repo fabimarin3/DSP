@@ -35,7 +35,7 @@ Y;
 N_max = k_f+l_f;
 N_min = k_i+l_i;
 Muestras = [N_min:N_max];
-stem(Muestras,Y,'p','LineWidth',1.5)
+stem(Muestras,Y,'b','LineWidth',1.5)
 xlabel('n')
 ylabel('y(n)')
 title('Convolución x(n)*h(n)')

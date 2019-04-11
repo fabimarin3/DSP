@@ -1,26 +1,24 @@
 %%%%%%%%Ejercicio n°02%%%%%%%%
-%Convolucion
 %Fabiola Marín R.
 %Gustavo Villalobos G.
 %Diego Cordero R.
+%Correlación
 
-%Entradas: Muestras de x(n), número de muestras, n de x, Muestras de h(n),
-%número de muestras, n de h
-%Salidas: Convolucion y número de muestras de la convolucion. 
-
-function [y,n_y] = Convolucion(x,n_x,h,n_h)
+function [r,n_y] = Correlacion(x,n_x,y,n_y)
 l_nx = length(n_x);
-l_nh = length(n_h);
+l_nh = length(n_y);
 k_i = n_x(1);
 k_f = n_x(l_nx);
-l_i = n_h(1);
-l_f = n_h(l_nh);
+l_i = n_y(1);
+l_f = n_y(l_nh);
 
 m=length(x); %Cantidad de muestras de x(n)
-n=length(h); %Cantidad de muestras de h(n)
+n=length(y); %Cantidad de muestras de h(n)
+
+A= flip(y);
 
 X=[x,zeros(1,n)]; %Añade a x(n) n cantidad de ceros, donde n es la cantidad de muestras de h(n)
-H=[h,zeros(1,m)]; %Añade a h(n) m cantidad de ceros, donde m es la cantidad de muestras de x(n)
+H=[A,zeros(1,m)]; %Añade a h(n) m cantidad de ceros, donde m es la cantidad de muestras de x(n)
 
 for i=1:n+m-1 %Para i que va de 1 a n+m-1, el largo de y(n)
 Y(i)=0; %y(n) inicia en cero
@@ -35,9 +33,13 @@ Y;
 N_max = k_f+l_f;
 N_min = k_i+l_i;
 Muestras = [N_min:N_max];
-stem(Muestras,Y,'p','LineWidth',1.5)
+stem(Muestras,Y,'k','LineWidth',1.5)
 xlabel('n')
-ylabel('y(n)')
-title('Convolución x(n)*h(n)')
+ylabel('r_{xy}(n)')
+title('Correlación')
+
 end
+
+
+
 
