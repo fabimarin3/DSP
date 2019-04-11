@@ -9,8 +9,8 @@
 %Salidas: Convolucion y número de muestras de la convolucion. 
 
 function [y,n_y] = Convolucion(x,n_x,h,n_h)
-l_nx = length(n_x);
-l_nh = length(n_h);
+l_nx = length(n_x);%Me da el largo de las muestras n
+l_nh = length(n_h);%Me da el largo de las muestras n
 k_i = n_x(1);
 k_f = n_x(l_nx);
 l_i = n_h(1);
@@ -35,7 +35,7 @@ Y;
 N_max = k_f+l_f;
 N_min = k_i+l_i;
 Muestras = [N_min:N_max];
-stem(Muestras,Y,'b','LineWidth',1.5)
+stem(Muestras,Y,'p','LineWidth',1.5)
 xlabel('n')
 ylabel('y(n)')
 title('Convolución x(n)*h(n)')

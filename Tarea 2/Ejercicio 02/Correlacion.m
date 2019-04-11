@@ -5,19 +5,20 @@
 %Correlación
 
 function [r,n_y] = Correlacion(x,n_x,y,n_y)
-l_nx = length(n_x);
-l_nh = length(n_y);
-k_i = n_x(1);
-k_f = n_x(l_nx);
-l_i = n_y(1);
-l_f = n_y(l_nh);
+
+A= flip(y);%Invierte todas las muestras de tal manera que la correlación se empiece desde la última muestra como tiene que ser. 
+
+l_nx = length(n_x);%Me da el largo de las muestras n de y
+l_ny = length(n_y);%Me da el largo de las muestras n de y
+k_i = n_x(1); %Para calcular el valor inicial de las muestras n de x
+k_f = n_x(l_nx); %Para calcular el valor final de las muestras n de x
+l_i = n_y(1);%Para calcular el valor inicial de las muestras n de y
+l_f = n_y(l_ny); %Para calcular el valor final de las muestras n de y
 
 m=length(x); %Cantidad de muestras de x(n)
-n=length(y); %Cantidad de muestras de h(n)
+n=length(y); %Cantidad de muestras de y(n)
 
-A= flip(y);
-
-X=[x,zeros(1,n)]; %Añade a x(n) n cantidad de ceros, donde n es la cantidad de muestras de h(n)
+X=[x,zeros(1,n)]; %Añade a x(n) n cantidad de ceros, donde n es la cantidad de muestras de y(n)
 H=[A,zeros(1,m)]; %Añade a h(n) m cantidad de ceros, donde m es la cantidad de muestras de x(n)
 
 for i=1:n+m-1 %Para i que va de 1 a n+m-1, el largo de y(n)
@@ -29,14 +30,31 @@ else
 end
 end
 end
-Y;
-N_max = k_f+l_f;
-N_min = k_i+l_i;
+Y
+N_max = (k_f+l_f);
+N_min = (k_i+l_i);
 Muestras = [N_min:N_max];
-stem(Muestras,Y,'k','LineWidth',1.5)
+
+%%%%Grafica%%%%%
+
+figure(1)
+subplot(3,1,1)
+stem(n_x,x,'r','LineWidth',1.5)
 xlabel('n')
-ylabel('r_{xy}(n)')
-title('Correlación')
+ylabel('x(n)')
+title('x(n)')
+
+subplot(3,1,2)
+stem(n_y,y,'g','LineWidth',1.5)
+xlabel('n')
+ylabel('y(n)')
+title('y(n)')
+
+subplot(3,1,3)
+stem(Muestras,Y,'p','LineWidth',1.5)
+xlabel('n')
+ylabel('y(n)')
+title('Correlación r_{xy}(n)')
 
 end
 
