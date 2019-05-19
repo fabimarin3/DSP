@@ -1,36 +1,49 @@
-z1 = exp(i*wo) 
-z2 = exp(-i*wo);
-p1 = r*exp(i*-wo);
-p2 = r*exp(-i*-wo);
+%%%%%%%%%Prueba del filtro de ranura%%%%%%
+close all;
+clear all;
+clc;
 
+w = []; %Frecuencia angular
+magnitud = [];
+fase = [];
+ 
+
+F1 = ranura(10000,20000);
+F2 = ranura(7778,20000);
+F3 = ranura(8889,20000);
+F4 = ranura(6667,20000);
+
+F = F1*F2*F3*F4;
 
 for a=-pi:0.01:pi
-   
-w=[w,a];
-num = (1-z1*exp(i*-a))*(1-z2*exp(i*-a))
-den = (1-p1*exp(i*-a))*(1-p2*exp(i*-a))
+        H = subs(F);
+        w=[w,a];
 
-H = bo*(num/den);
-mag = abs(H);
+        mag = abs(H);
 
-magnitud=[magnitud, mag];
+    magnitud=[magnitud, mag];
 
-fa = angle(H);
+    fa = angle(H);
 
-fase=[fase,fa];
+    fase=[fase,fa];
 
+    
 end
-
 figure(1)
 subplot(2,1,1)
 plot(w,magnitud,'b','LineWidth',1);
 hold on
-title('Magnitud Diagrama 1');
+title('Respuesta en Magnitud');
 xlabel('Frecuencia')
-ylabel('Respuesta en Magnitud')
+ylabel('Magnitud')
+
 
 subplot(2,1,2)
 plot(w,fase,'b','LineWidth',1);
-title('Fase Diagrama 1');
+title('Respuesta de Fase');
 xlabel('Frecuencia')
-ylabel('Respuesta en Fase')
+ylabel('Fase')
+
+
+
+

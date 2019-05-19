@@ -1,6 +1,3 @@
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%Prueba de gráfico de magnitud y fase%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 close all;
 clear all;
 clc;
@@ -8,29 +5,27 @@ clc;
 w = []; %Frecuencia angular
 magnitud = [];
 fase = [];
-% a = sym('a');
+%a = sym('a');
 a = -pi:0.01:pi;
-
 n = -1:0.0001:1
 x = 2 + cos(100*pi*n + pi) + sin(120*pi*n - pi/2);
 
-X = (2.*(1-exp(-1i.*a)).*(1+exp(-1i.*a)))/(1-2.*exp(-1i.*a)+exp(-2.*1i.*a));
-Hz = ranura1(60,300);
+Xz = (2.*(1-exp(-1i.*a)).*(1+exp(-1i.*a)))/(1-2.*exp(-1i.*a)+exp(-2.*1i.*a));
+% Hz = ranura1(60,300);
+% Y = (Xz*Hz);
 
-
-for a=-pi:0.001:pi;
-        Y = Hz*X;
-        H = subs(Y)
+for a=-pi:0.0001:pi
         w=[w,a];
 
-        mag = abs(H);
+        mag = abs(Xz);
 
     magnitud=[magnitud, mag];
-
-    fa = angle(H);
+    
+    fa = angle(Xz);
 
     fase=[fase,fa];
     
+
 end
 figure(1)
 
@@ -45,7 +40,7 @@ figure(1)
 
 subplot(2,1,1)
 plot(w,magnitud,'b','LineWidth',1);
-axis([-.2 .2  0 0.00001])
+axis([-.2 .2  0 0.00001]);
 hold on
 title('Respuesta en Magnitud');
 xlabel('Frecuencia')
@@ -53,8 +48,7 @@ ylabel('Magnitud')
 
 subplot(2,1,2)
 plot(w,fase,'b','LineWidth',1);
-axis([-.2 .2  -1.7 -1.5]);
+axis([-.2 .2  -2 -1]);
 title('Respuesta de Fase');
-%xlabel('Frecuencia')
+xlabel('Frecuencia')
 ylabel('Fase')
-

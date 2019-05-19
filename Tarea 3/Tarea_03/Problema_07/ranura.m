@@ -1,3 +1,9 @@
+%%%%%%%% Problema n°07 Filtro %%%%%%%%
+%%%%%%%% Problema n°1 %%%%%%%%
+%Fabiola Marín R.
+%Gustavo Villalobos G.
+%Diego Cordero R.
+
 function H = ranura(Fo,Fs)
 fo =  Fo/Fs; % Frecuencia normalizada
 wo = (2*pi*fo); % Frecuencia de los polos y ceros
